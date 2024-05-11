@@ -3,7 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <img src="classify-shield-logo.ico" alt="App Logo" class="app-logo"> -->
+ 
+
     <title>Folder Classifier</title>
+
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <style>
@@ -84,11 +88,30 @@
         #fileTable thead {
             display: none;
         }
+     
+
+        .logo-container {
+            justify-content: center;
+            display: flex;
+            width: 100%; 
+            height: auto; 
+        }
+        .logo {
+            width: 130px; 
+            height: auto; 
+        }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1 class="text-center mb-4">Folder Classifier</h1>
+        
+        <!-- <img src="{{ url_for('static', filename='Picture1.png') }}" alt="My App Logo"> -->
+        <div class="logo-container">
+            <img src="{{ url_for('static', filename='Picture1.png') }}" alt="My App Logo" class="logo">
+
+        </div>
+
+        <h1 class="text-center mb-4">Classify Shield</h1>
         
         <div class="custom-file mb-4">
             <input type="file" class="custom-file-input" id="folderInput" webkitdirectory directory multiple accept=".pdf,.docx" onchange="uploadFolder(this.files)">
@@ -130,8 +153,8 @@
                     const nameCell = document.createElement('td');
                     const classCell = document.createElement('td');
 
-                    nameCell.innerHTML = `<i class="fas fa-file-alt mr-1"></i>${fileName}`;
-                    classCell.innerHTML = `<i class="fas fa-shield-alt mr-1"></i>${classification.text}`;
+                    nameCell.innerHTML = `${fileName}`;
+                    classCell.innerHTML = `${classification.text}`;
 
                     // Add color class based on classification
                     classCell.classList.add('bg-' + classification.color);
